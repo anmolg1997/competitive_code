@@ -4,13 +4,14 @@ class Solution:
         #f(m-1,n-1) = f(m-2,n-1) + f(m-1,n-2)
         i=0
         j=0
-        dp = [[0]*n for _ in range(m)]
-        dp[0][0] = 1
+        dp = [0]*n
 
         for i in range(0,m):
             for j in range(0,n):
                 if (i==0) or (j==0):
-                    dp[i][j] = 1
+                    dp[j] = 1
                     continue
-                dp[i][j] = dp[i-1][j] + dp[i][j-1]
-        return dp[m-1][n-1]
+                if j==1:
+                    dp[j] = i
+                dp[j] = dp[j] + dp[j-1]
+        return dp[n-1]
