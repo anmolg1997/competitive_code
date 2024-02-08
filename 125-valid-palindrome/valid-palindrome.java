@@ -19,4 +19,23 @@ class Solution {
 
         
     }
+
+
+    public static boolean recursivePalindrome(String s, int left, int right){
+
+        if (left>=right) return true;
+
+        char l=s.charAt(left), r=s.charAt(right);
+        if (!Character.isLetterOrDigit(l)){
+            left++;
+        } else if (!Character.isLetterOrDigit(r)){
+            right--;
+        } else if (Character.toLowerCase(l)==Character.toLowerCase(r)){
+            left++;
+            right--;
+        } else return false;
+
+        recursivePalindrome(s, left, right);
+        return true;
+    }
 }
