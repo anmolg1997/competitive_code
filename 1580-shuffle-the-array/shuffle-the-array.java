@@ -3,22 +3,16 @@ import java.util.Arrays;
 class Solution {
     public int[] shuffle(int[] nums, int n) {
         
-        for (int i=n; i<2*n; i++) {
-            shuffleElement(nums, i, n);
+        int[] outArray = new int[2*n];
+
+        for (int i=0; i<n; i++) {
+            outArray[2*i]=nums[i];
+            outArray[2*i+1]=nums[n+i];  
         }
 
-        return nums;
+        return outArray;
     }
 
 
-    public static void shuffleElement(int[] arr, int ind, int num) {
 
-        int tmp = arr[ind];
-
-        for (int j=ind; j>=2*(ind-num+1); j--) {
-            arr[j] = arr[j-1];
-        }
-
-        arr[2*(ind-num)+1] = tmp;
-    }
 }
